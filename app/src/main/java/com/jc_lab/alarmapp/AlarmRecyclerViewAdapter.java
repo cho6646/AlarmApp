@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class AlarmRecyclerViewAdapter extends RecyclerView.Adapter<AlarmRecyclerViewAdapter.ViewHolder>
 {
-    private ArrayList<String> mAlarmData = null;
+    private ArrayList<AlarmData> mAlarmData = null;
 
     public class ViewHolder extends  RecyclerView.ViewHolder
     {
@@ -28,7 +28,7 @@ public class AlarmRecyclerViewAdapter extends RecyclerView.Adapter<AlarmRecycler
         }
     }
 
-    AlarmRecyclerViewAdapter(ArrayList<String> list)
+    AlarmRecyclerViewAdapter(ArrayList<AlarmData> list)
     {
         this.mAlarmData = list;
     }
@@ -45,8 +45,9 @@ public class AlarmRecyclerViewAdapter extends RecyclerView.Adapter<AlarmRecycler
 
     @Override
     public void onBindViewHolder(@NonNull AlarmRecyclerViewAdapter.ViewHolder holder, int position) {
-        String str = mAlarmData.get(position);
-        holder.mAlarmTextView.setText(str);
+        String alarmText = mAlarmData.get(position).getAlarmText();
+        boolean alarmToggle = mAlarmData.get(position).getSwitchOn();
+        holder.mAlarmTextView.setText(alarmText);
     }
 
     @Override
