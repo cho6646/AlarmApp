@@ -9,10 +9,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="10:00 AM"
-        android:paddingLeft="30px"
+        android:paddingLeft="50px"
         android:textSize="40sp"
         android:paddingTop="10px"
         android:paddingBottom="10px"
+        android:textColor="@android:color/white"
+        android:background="@android:color/black"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
     />
@@ -24,9 +26,11 @@
         app:layout_constraintRight_toRightOf="@id/recyclerViewItemText"
         app:layout_constraintTop_toTopOf="@id/recyclerViewItemText"
         app:layout_constraintBottom_toBottomOf="@id/recyclerViewItemText"
-        android:scaleX="1.7"
-        android:scaleY="1.7"
-        android:paddingRight="30px"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
+        app:thumbTint="@android:color/white"
+        app:trackTint="@android:color/holo_blue_dark"
+        android:paddingRight="50px"
     />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
