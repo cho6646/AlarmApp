@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/recyclerViewItemText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="10:00 AM"
+        android:paddingLeft="30px"
+        android:textSize="40sp"
+        android:paddingTop="10px"
+        android:paddingBottom="10px"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+    />
+    
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/recyclerViewItemSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintRight_toRightOf="@id/recyclerViewItemText"
+        app:layout_constraintTop_toTopOf="@id/recyclerViewItemText"
+        app:layout_constraintBottom_toBottomOf="@id/recyclerViewItemText"
+        android:scaleX="1.7"
+        android:scaleY="1.7"
+        android:paddingRight="30px"
+    />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
