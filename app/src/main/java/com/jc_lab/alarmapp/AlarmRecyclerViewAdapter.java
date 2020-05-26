@@ -23,8 +23,8 @@ public class AlarmRecyclerViewAdapter extends RecyclerView.Adapter<AlarmRecycler
         ViewHolder(View itemView)
         {
             super(itemView);
-            mAlarmTextView.findViewById(R.id.recyclerViewItemText);
-            mAlarmSwitch.findViewById(R.id.recyclerViewItemSwitch);
+            mAlarmTextView = itemView.findViewById(R.id.recyclerViewItemText);
+            mAlarmSwitch = itemView.findViewById(R.id.recyclerViewItemSwitch);
         }
     }
 
@@ -35,7 +35,7 @@ public class AlarmRecyclerViewAdapter extends RecyclerView.Adapter<AlarmRecycler
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.alarm_recycler_view_item, parent, false);
@@ -48,6 +48,7 @@ public class AlarmRecyclerViewAdapter extends RecyclerView.Adapter<AlarmRecycler
         String alarmText = mAlarmData.get(position).getAlarmText();
         boolean alarmToggle = mAlarmData.get(position).getSwitchOn();
         holder.mAlarmTextView.setText(alarmText);
+        holder.mAlarmSwitch.setChecked(alarmToggle);
     }
 
     @Override
