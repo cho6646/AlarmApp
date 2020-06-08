@@ -13,8 +13,6 @@
         android:textSize="40sp"
         android:paddingTop="10px"
         android:paddingBottom="10px"
-        android:textColor="@android:color/white"
-        android:background="@android:color/black"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
     />
@@ -28,8 +26,7 @@
         app:layout_constraintBottom_toBottomOf="@id/recyclerViewItemText"
         android:scaleX="1.5"
         android:scaleY="1.5"
-        app:thumbTint="@android:color/white"
-        app:trackTint="@android:color/holo_blue_dark"
+        android:checked="false"
         android:paddingRight="50px"
     />
 
