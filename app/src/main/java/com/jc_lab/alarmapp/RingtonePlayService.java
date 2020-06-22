@@ -49,7 +49,6 @@ public class RingtonePlayService extends Service {
 
         Intent intent1 = new Intent(this, AlarmActivity.class);
         intent1.putExtra("alarmText", alarmText);
-//        intent1.putExtra("requestCode", requestCode);
         for(int i=0; i<MainActivity.alarmDataArrayList.size(); i++)
         {
             if(MainActivity.alarmDataArrayList.get(i).getRequestCode()==requestCode)

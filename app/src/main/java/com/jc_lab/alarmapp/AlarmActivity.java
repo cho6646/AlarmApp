@@ -10,10 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.ncorti.slidetoact.SlideToActView;
 
-import org.w3c.dom.Text;
-
-import java.util.Iterator;
-
 public class AlarmActivity  extends AppCompatActivity {
     private MediaPlayer mediaPlayer;
 

@@ -11,7 +11,6 @@ public class AlarmReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
 
         this.context = context;
-//        context.startActivity(new Intent(context, MainActivity.class));
 
         String alarmText = intent.getExtras().getString("alarmText");
         int requestCode = intent.getExtras().getInt("requestCode");

@@ -12,14 +12,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class SharedPreferenceUtil {
-//    private SharedPreferences sp;
     private Context mContext;
     private static final String XML_FILE_NAME = "alarm_list";
 
     public SharedPreferenceUtil(Context mContext)
     {
         this.mContext = mContext;
-//        sp = mContext.getSharedPreferences(XML_FILE_NAME, Activity.MODE_PRIVATE);
     }
 
     public ArrayList<AlarmData> getAlarmList()
