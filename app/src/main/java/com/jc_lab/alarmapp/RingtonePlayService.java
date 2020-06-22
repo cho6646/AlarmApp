@@ -20,11 +20,6 @@ import androidx.core.app.NotificationCompat;
 
 public class RingtonePlayService extends Service {
 
-//    MediaPlayer mediaPlayer;
-//    Ringtone ringtone;
-//    int startId;
-//    boolean isRunning;
-
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
@@ -34,66 +29,34 @@ public class RingtonePlayService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId)
     {
-//        String state = intent.getExtras().getString("state");
-//        assert state != null;
-//        switch (state)
-//        {
-//            case "alarm on":
-//                startId = 1;
-//                break;
-//            case "alarm off":
-//                startId = 0;
-//                break;
-//            default:
-//                startId = 0;
-//                break;
-//        }
-//
-//        if(!this.isRunning && startId == 1)
-//        {
-////            mediaPlayer = MediaPlayer.create(this,R.raw.ouu); // 여기 음악 넣어야 함
-//            Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
-//            mediaPlayer = MediaPlayer.create(getApplicationContext(), notification);
-//            mediaPlayer.start();
-////            ringtone = RingtoneManager.getRingtone(getApplicationContext(), notification);
-////            if(android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.P)
-////            {
-////                ringtone.setVolume(1.0f);
-////                ringtone.setLooping(true);
-////            }
-////            ringtone.play();
-//
-//            this.isRunning = true;
-//            this.startId = 0;
-//        }
-//        else if(this.isRunning && startId == 0)
-//        {
-////            ringtone.stop();
-//            mediaPlayer.stop();
-//            mediaPlayer.reset();
-//            mediaPlayer.release();
-//
-//            this.isRunning = false;
-//            this.startId = 0;
-//            stopSelf();
-//        }
-//        return START_NOT_STICKY;
+        String alarmText = intent.getExtras().getString("alarmText");
+        int requestCode = intent.getExtras().getInt("requestCode");
         if(Build.VERSION.SDK_INT>=26)
         {
             String CHANNEL_ID = "Alarm";
             NotificationChannel channel = new NotificationChannel(CHANNEL_ID,
                     "AlarmApp",
-                    NotificationManager.IMPORTANCE_NONE);
+                    NotificationManager.IMPORTANCE_HIGH);
             channel.setSound(null,null);
             channel.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
             ((NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE)).createNotificationChannel(channel);
             Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
+                    .setOngoing(true)
                     .setSmallIcon(R.mipmap.ic_launcher)
                     .build();
             startForeground(1, notification);
         }
 
         Intent intent1 = new Intent(this, AlarmActivity.class);
+        intent1.putExtra("alarmText", alarmText);
+//        intent1.putExtra("requestCode", requestCode);
+        for(int i=0; i<MainActivity.alarmDataArrayList.size(); i++)
+        {
+            if(MainActivity.alarmDataArrayList.get(i).getRequestCode()==requestCode)
+            {
+                MainActivity.alarmDataArrayList.get(i).setSwitchOn(false);
+            }
+        }
         intent1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent1);
         Log.d("AlarmService", "Alarm");

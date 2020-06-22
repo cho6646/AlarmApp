@@ -11,12 +11,15 @@ public class AlarmReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
 
         this.context = context;
+//        context.startActivity(new Intent(context, MainActivity.class));
 
-//        String state = intent.getExtras().getString("state");
+        String alarmText = intent.getExtras().getString("alarmText");
+        int requestCode = intent.getExtras().getInt("requestCode");
 
         Intent serviceIntent = new Intent(context, RingtonePlayService.class);
 
-//        serviceIntent.putExtra("state", state);
+        serviceIntent.putExtra("alarmText", alarmText);
+        serviceIntent.putExtra("requestCode", requestCode);
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O){
             context.startForegroundService(serviceIntent);
